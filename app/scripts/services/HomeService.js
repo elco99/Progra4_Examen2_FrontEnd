@@ -1,7 +1,7 @@
 angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 	function($http){
 		$http.defaults.withCredentials = true;
-		var baseUrl = 'http://localhost:8000/';
+		var baseUrl = 'https://danycheong-partedeapp.herokuapp.com/';
 		return {
 				GetRegalos: function(){
 					return $http.get(baseUrl + "v1/regalos");

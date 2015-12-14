@@ -1,12 +1,12 @@
-<div ng-controller="UsersController" class="container">
+<div ng-controller="GiftController" class="container">
 
         <!-- Page Heading/Breadcrumbs -->
         <div >
-            <h1 class="page-header">Usuarios</h1>
+            <h1 class="page-header">Regalos</h1>
             <ol class="breadcrumb">
                 <li><a ng-click="goHome()">Inicio</a>
                 </li>
-                <li class="active">Gestionar Usuarios</li>
+                <li class="active">Gestionar Regalo</li>
             </ol>
 
         </div>
@@ -15,39 +15,42 @@
             <div class="col-lg-12">
 
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                    <li class="active"><a data-target="#agregarProduct" data-toggle="tab">Agregar Usuarios</a>
+                    <li class="active"><a data-target="#agregarProduct" data-toggle="tab">Agregar Regalos</a>
                     </li>
-                    <li class=""><a class="btn" data-target="#modificarProduct" ng-click="getUsers()" data-toggle="tab">Modificar Usuarios</a>
+                    <li class=""><a class="btn" data-target="#modificarProduct" ng-click="getGift()" data-toggle="tab">Modificar Regalos</a>
                     </li>
                 </ul>
 
                 <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="agregarProduct">
+                    <div class="tab-pane fade active in">
                         <div class="row">
 					        <!-- Projects Row -->
-					        <div class="col-md-12 col-sm-12">
-					            <label>Nombre</label>
-					            <input ng-model="user.name" type="text" >
-
+					        <div class="row">
+					            <label class="col-md-3 col-sm-3 col-xs-3 Centrado">Nombre</label>
+					            <input ng-model="gift.name" type="text" class="col-md-3 col-sm-3 col-xs-3"></input>
 					        </div>
-					        <div class="col-md-12 col-sm-12">
-					            <label>Usuario</label>
-					            <input ng-model="user.username" type="text" ></input>
+					        <div class="row">
+					            <label class="col-md-3 col-sm-3 col-xs-3 Centrado">Descripcion</label>
+					            <input ng-model="gift.descripcion" type="text" class="col-md-3 col-sm-3 col-xs-3"></input>
 					        </div>
-					        <div class="col-md-12 col-sm-12">
-					            <label>Contraseña</label>
-					            <input ng-model="user.password" type="text" ></input>
+					        <div class="row">
+					            <label class="col-md-3 col-sm-3 col-xs-3 Centrado">Peso</label>
+					            <input ng-model="gift.peso" type="text" class="col-md-3 col-sm-3 col-xs-3"></input>
 					        </div>
-					        <div class="col-md-12 col-sm-12">
-					            <label>Email</label>
-					            <input ng-model="user.email" type="text" ></input>
+					        <div class="row">
+					            <label class="col-md-3 col-sm-3 col-xs-3 Centrado">Destinatario</label>
+					            <input ng-model="gift.destinario" type="text" class="col-md-3 col-sm-3 col-xs-3"></input>
 					        </div>
-					        <div class="col-md-12 col-sm-12">
-				            	<label>Tipo</label>
-				            	<input ng-model="user.scope" type="text"></input>
-				        	</div>
-				        	<div class="col-md-12 col-sm-12">
-				        		<button ng-click="postUsers()" class="btn btn-danger">Agregar</button>
+					        <div class="row">
+					            <label class="col-md-3 col-sm-3 col-xs-3 Centrado">Status</label>
+					            <input ng-model="gift.status" type="text" class="col-md-3 col-sm-3 col-xs-3"></input>
+					        </div>
+					        <div class="row">
+					            <label class="col-md-3 col-sm-3 col-xs-3 Centrado">Estado</label>
+					            <input ng-model="gift.estado" type="text" class="col-md-3 col-sm-3 col-xs-3"></input>
+					        </div>
+				        	<div class="row">
+				        		<button ng-click="postGift()" class="btn btn-danger">Agregar</button>
 					        </div>
 					    </div >
                     </div>
@@ -55,23 +58,20 @@
                     	<div class = "container">
 							<table id="TableGestion" class="table table-striped">
 						      <tr>
-						      	<th ng-if ="false">
-						      		ID
-						      	</th>
 						        <th>
 						          Nombre
 						        </th>
 						        <th>
-						          Usuario
+						          Descripcion
 						        </th>
 						        <th>
-						          Contraseña
+						          Peso
 						        </th>
 						        <th>
-						          Email
+						          Destinatario
 						        </th>
 						        <th>
-						          Tipo
+						          Status
 						        </th>
 						        <th>
 						          Estado
@@ -80,55 +80,52 @@
 						        </th>
 						      </tr>
 						      <tr>
-						      	<td ng-if="false">
-						      		<input readonly="" ng-model="userModif.id"> </input>
+						      	<td>
+						      		<input ng-model="giftModif.nombre" type = "text"> </input>
 						      	</td>
 						      	<td>
-						      		<input ng-model="userModif.name" type = "text"> </input>
+						      		<input ng-model="giftModif.descripcion"  type = "text"> </input>
 						      	</td>
 						      	<td>
-						      		<input ng-model="userModif.username"  type = "text"> </input>
+						      		<input ng-model="giftModif.peso" type = "text"> </input>
 						      	</td>
 						      	<td>
-						      		<input ng-model="userModif.password" type = "text"> </input>
+						      		<input ng-model="giftModif.destinario" type = "text"> </input>
 						      	</td>
 						      	<td>
-						      		<input ng-model="userModif.email" type = "text"> </input>
+						      		<input ng-model="giftModif.status" class="input_gestion_productos" type = "text"> </input>
 						      	</td>
 						      	<td>
-						      		<input ng-model="userModif.type" class="input_gestion_productos" type = "text"> </input>
+						      		<input ng-model="giftModif.estado" class="input_gestion_productos" type = "text"> </input>
 						      	</td>
 						      	<td>
-						      		<input ng-model="userModif.state" class="input_gestion_productos" type = "text"> </input>
-						      	</td>
-						      	<td>
-						      		<input type = "submit" ng-click="saveUserChanges()" class="btn btn-primary" value="Guardar"></input>
+						      		<input type = "submit" ng-click="saveGiftChanges()" class="btn btn-primary" value="Guardar"></input>
 						      	</td>
 						      </tr>
-						      <tr ng-repeat="user in users">
+						      <tr ng-repeat="gift in gifts">
 						      	<td ng-if ="false">
-						      		{{user._id}}/
+						      		{{gift._id}}/
 						      	</td>
 						        <td>
-						          {{user.name}}
+						          {{gift.name}}
 						        </td>
 						        <td>
-						          {{user.username}}
+						          {{gift.giftname}}
 						        </td>
 						        <td>
-						          {{user.password}}
+						          {{gift.password}}
 						        </td>
 						        <td>
-						          {{user.email}}
+						          {{gift.email}}
 						        </td>
 						        <td>
-						          {{user.type}}
+						          {{gift.type}}
 						        </td>
 						        <td>
-						          {{user.state}}
+						          {{gift.state}}
 						        </td>
 						        <td>
-						          <button ng-click="show_modificar_user(user)" class="btn btn-danger">Modificar</button>
+						          <button ng-click="show_modificar_gift(gift)" class="btn btn-danger">Modificar</button>
 
 						        </td>
 						      </tr>

@@ -4,13 +4,6 @@ angular.module('AngularScaffold.Controllers')
 	$scope.user = {};
 	$scope.userModif = {};
 
-  if($state.params.content){
-    $scope.prueba = $state.params.content.searched_value;
-    $scope.imageName = $state.params.content.image;
-    $scope.name = $state.params.content.name;
-    $scope.description = $state.params.content.description;
-    $scope.price = $state.params.content.price;
-  }
 
 
 	$scope.getUsers = function(){
