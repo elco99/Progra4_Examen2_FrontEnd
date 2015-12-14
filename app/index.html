@@ -12,7 +12,7 @@
     <!-- endinject -->
   </head>
   <body ng-app="AngularScaffold">
-    <div ng-controller="NavbarController">
+    <div ng-controller="navbarController">
       <nav class="navbar navbar-default">
         <div class="container-fluid" >
           <div class="navbar-header pull-right">
@@ -24,19 +24,17 @@
                 <button type="submit" class="btn btn-default" ng-click="register()">Register!</button>
               </div>
               <div class="row">
+                  <label class="btn" ng-show="$sessionStorage.currentUser" ng-click="goGestionUser()">Gestión de usuarios</label>
+                  <label class="btn" ng-show="$sessionStorage.currentUser" ng-click="goGestionRegalos()">Gestión de regalos</label>
+                  <label class="btn" ng-show="$sessionStorage.currentUser" ng-click="goLista()">Lista Entregado</label>
+                  <label class="btn" ng-show="$sessionStorage.currentUser" ng-click="goNoLista()">Lista No Entregado</label>
                   <button type="submit" class="btn btn-default" ng-click="logout()" ng-show="$sessionStorage.currentUser">Log out</button>
               </div>
             </form>
           </div>
         </div>
       </nav>
-      <div ng-show="$sessionStorage.currentUser">
-        <h1>Bienvenido {{$sessionStorage.currentUser.username}}</h1>
-        <ul>
-          Sus roles son:
-          <li ng-repeat="role in $sessionStorage.currentUser.scope">{{role}}</li>
-        </ul>
-      </div>
+      
     </div>
     <div class="container">
       <div ui-view></div>
@@ -64,6 +62,7 @@
   <!-- inject:js -->
   <script src="scripts/controllers/HomeController.js"></script>
   <script src="scripts/controllers/navbarController.js"></script>
+  <script src="scripts/controllers/UsersController.js"></script>
   <script src="scripts/services/authService.js"></script>
   <script src="scripts/services/HomeService.js"></script>
   <!-- endinject -->

@@ -3,11 +3,11 @@ angular.module('AngularScaffold.Services').factory('HomeService', ['$http',
 		$http.defaults.withCredentials = true;
 		var baseUrl = 'http://localhost:8000/';
 		return {
-				GetStudents: function(){
-					return $http.get(baseUrl + "v1/students");
+				GetRegalos: function(){
+					return $http.get(baseUrl + "v1/regalos");
 				},
-				PostStudents: function(payload){
-					return $http.post(baseUrl + "v1/student", payload);
+				PostRegalos: function(payload){
+					return $http.post(baseUrl + "v1/regalo", payload);
 				}
 	    };
 }]);

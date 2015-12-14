@@ -1,7 +1,23 @@
 angular.module('AngularScaffold.Controllers')
-  .controller('NavbarController', ['AuthService', '$scope', '$rootScope', '$sessionStorage',  function (authService, $scope, $rootScope, $sessionStorage) {
+  .controller('navbarController', ['AuthService', '$scope', '$rootScope','$state', '$sessionStorage',  function (authService, $scope, $rootScope,$state, $sessionStorage) {
       $scope.user = {};
       $scope.$sessionStorage = $sessionStorage;
+
+      $scope.goGestionUser = function(){
+        $state.go('UserCreate');
+      }
+
+      $scope.goGestionRegalos = function(){
+        $state.go('RegaloCreate');
+      }
+
+      $scope.goLista = function(){
+        $state.go('Lista');
+      }
+
+      $scope.goNoLista = function(){
+        $state.go('noEntregado');
+      }
 
       $scope.logout = function(){
         authService.Logout().then(function(response){
