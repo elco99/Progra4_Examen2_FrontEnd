@@ -1,5 +1,5 @@
 angular.module('AngularScaffold.Controllers')
- .controller('UsersController', ['$scope', 'HomeService','$state','$sessionStorage', function ($scope, HomeService,$state,$sessionStorage) {
+ .controller('UsersController', ['$scope', 'UserService','$state','$sessionStorage', function ($scope, UserService,$state,$sessionStorage) {
 	$scope.users = [];
 	$scope.user = {};
 	$scope.userModif = {};
@@ -14,7 +14,7 @@ angular.module('AngularScaffold.Controllers')
 
 
 	$scope.getUsers = function(){
-		HomeService.GetUsers().then(function(response){
+		UserService.GetUsers().then(function(response){
   		$scope.users = response.data;
   	}).catch(function(err){
   		alert('Error fetching users')
@@ -22,7 +22,7 @@ angular.module('AngularScaffold.Controllers')
 	};
 
 	$scope.postUsers = function(){
-		HomeService.PostUsers($scope.user).then(function(response){
+		UserService.PostUsers($scope.user).then(function(response){
 	    alert("Creado Exitosamente");
 	}).catch(function(err){
 	    alert("Error posting to users");
@@ -30,13 +30,8 @@ angular.module('AngularScaffold.Controllers')
 	}
 
   $scope.show_modificar_user = function(user){
-    $scope.userModif.id = user._id;
-    $scope.userModif.name = user.name;
     $scope.userModif.username = user.username;
-    $scope.userModif.password = user.password;
-    $scope.userModif.email = user.email;
-    $scope.userModif.type = user.type;
-    if (user.state == true) {
+    if (user.estado == true) {
       $scope.userModif.state = "true";
     }else{
       $scope.userModif.state = "false";
@@ -45,7 +40,7 @@ angular.module('AngularScaffold.Controllers')
   };
 
   $scope.saveUserChanges = function(){
-    HomeService.SaveUserChanges($scope.userModif).then(function(response){
+    UserService.SaveUserChanges($scope.userModif).then(function(response){
       $scope.users = response.data;
 
     }).catch(function(err){
